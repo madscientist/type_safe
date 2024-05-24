@@ -8,7 +8,6 @@
 #if defined(TYPE_SAFE_IMPORT_STD_MODULE)
 import std;
 #else
-#include <iosfwd>
 #include <iterator>
 #include <type_traits>
 #include <utility>
@@ -748,32 +747,6 @@ namespace strong_typedef_op
         {
             using type = underlying_type<StrongTypedef>;
             return static_cast<const type&>(lhs) - static_cast<const type&>(rhs);
-        }
-    };
-
-    template <class StrongTypedef>
-    struct TYPE_SAFE_MSC_EMPTY_BASES input_operator
-    {
-        /// \exclude
-        template <typename Char, class CharTraits>
-        friend std::basic_istream<Char, CharTraits>& operator>>(
-            std::basic_istream<Char, CharTraits>& in, StrongTypedef& val)
-        {
-            using type = underlying_type<StrongTypedef>;
-            return in >> static_cast<type&>(val);
-        }
-    };
-
-    template <class StrongTypedef>
-    struct TYPE_SAFE_MSC_EMPTY_BASES output_operator
-    {
-        /// \exclude
-        template <typename Char, class CharTraits>
-        friend std::basic_ostream<Char, CharTraits>& operator<<(
-            std::basic_ostream<Char, CharTraits>& out, const StrongTypedef& val)
-        {
-            using type = underlying_type<StrongTypedef>;
-            return out << static_cast<const type&>(val);
         }
     };
 

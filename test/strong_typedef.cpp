@@ -3,6 +3,7 @@
 // found in the top-level directory of this distribution.
 
 #include <type_safe/strong_typedef.hpp>
+#include <type_safe/strong_typedef_ss.hpp>
 
 #include <catch.hpp>
 
