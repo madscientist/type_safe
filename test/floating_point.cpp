@@ -18,12 +18,16 @@ static_assert(std::is_constructible<floating_point<float>, float>::value, "");
 static_assert(!std::is_constructible<floating_point<float>, double>::value, "");
 static_assert(std::is_constructible<floating_point<double>, double>::value, "");
 static_assert(std::is_constructible<floating_point<double>, double>::value, "");
-static_assert(!std::is_constructible<floating_point<double>, long double>::value, "");
+static_assert(std::is_constructible<floating_point<double>, long double>::value
+                  == (sizeof(double) == sizeof(long double)),
+              "");
 static_assert(std::is_assignable<floating_point<float>, float>::value, "");
 static_assert(!std::is_assignable<floating_point<float>, double>::value, "");
 static_assert(std::is_assignable<floating_point<double>, double>::value, "");
 static_assert(std::is_assignable<floating_point<double>, double>::value, "");
-static_assert(!std::is_assignable<floating_point<double>, long double>::value, "");
+static_assert(std::is_assignable<floating_point<double>, long double>::value
+                  == (sizeof(double) == sizeof(long double)),
+              "");
 #endif
 
 TEST_CASE("floating_point")
